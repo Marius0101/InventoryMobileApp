@@ -1,6 +1,6 @@
 import { View, Text, TextInput, StyleSheet } from 'react-native';
 import React from 'react';
-const CustomInput = ({value,setValue, placeholder, secureTextEntry}) => {
+const CustomInput = ({value,setValue, placeholder, secureTextEntry,keyboardType = "default"}) => {
   return (
         <TextInput
             style={styles.text_input}
@@ -8,6 +8,8 @@ const CustomInput = ({value,setValue, placeholder, secureTextEntry}) => {
             value={value}
             onChangeText={setValue}
             secureTextEntry = {secureTextEntry}
+            keyboardType= {keyboardType}
+            
         />
       
   )

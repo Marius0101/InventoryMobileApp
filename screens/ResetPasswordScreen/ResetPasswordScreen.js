@@ -1,80 +1,62 @@
+import {Text} from 'react-native';
 import React, {useState} from "react";
 import { StatusBar } from 'expo-status-bar';
-import { SafeAreaView,StyleSheet, Text, View,Image, useWindowDimensions,ScrollView,KeyboardAvoidingView} from 'react-native';
-import CustomInput from "../../components/CustomInput/CustomInput";
-import CustomTouchableOpacity from "../../components/CustomTouchableOpacity/CustomTouchableOpacity";
-import {MaterialIcons, Ionicons} from 'react-native-vector-icons';
+import { SafeAreaView,StyleSheet, View,Image, useWindowDimensions,ScrollView,KeyboardAvoidingView} from 'react-native';
+import CustomInput from '../../components/CustomInput/CustomInput';
+import CustomTouchableOpacity from '../../components/CustomTouchableOpacity/CustomTouchableOpacity';
 
-
-
-const SignUpScreen = ({navigation}) =>{
+const ResetPasswordScreen= ({navigation}) =>{
     const {height} = useWindowDimensions();
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const onLogin =() =>{
-        console.warn("Login");
-        console.warn(email);
-        console.warn(password);
-    }
-    return(
+    return (
         
-            <View  style={styles.body}>
+        <View  style={styles.body}>
                 <KeyboardAvoidingView>
                 <ScrollView showsVerticalScrollIndicator = {false}>
                 <StatusBar/>
-                    <View style= {styles.logo_container}> 
+                    <View style= {styles.logo_container}>
                         <Image source = {require("../../assets/images/misc/Logo_UNITBV.png")} style= {[styles.logo,{height:height*0.3}]} resizeMode="contain" />
                     </View>
                 <SafeAreaView style={styles.touchablecontainer}>
-                    <Text style = {styles.title}>Login</Text>
+                    <Text style = {styles.title} width = {height*0.3}>Reset Passsword</Text>
                         <View style= {styles.input_containers}>
                             <View style= {styles.input_container}>
-                                <MaterialIcons name  = "alternate-email" size = {20} color = "#232b2b"/>
                                 <CustomInput
-                                    placeholder="Email"
+                                    placeholder="Enter new password"
                                     value={email} 
                                     setValue={setEmail}
+                                    keyboardType='number-pad'
                                 />
                             </View>
-                            <View style = {styles.input_container}>
-                                <Ionicons name="lock-closed-outline" size = {20} color = "#232b2b"
-                                /> 
+                            <View style= {styles.input_container}>
                                 <CustomInput
-                                    placeholder="Passsword"
-                                    value={password}
-                                    setValue={setPassword}
-                                    secureTextEntry={true}
+                                    placeholder="Confirm the password"
+                                    value={email} 
+                                    setValue={setEmail}
+                                    keyboardType='number-pad'
                                 />
-                                <MaterialIcons name  = "visibility-off" size = {20} color = "#232b2b"/>
                             </View>
-                            <CustomTouchableOpacity
-                                text="Forgot?"
-                                onPress={()=>
-                                    navigation.navigate("ForgotPassword")}
-                                type = "tertiary"
-                            />
                         </View>
-                    <CustomTouchableOpacity
-                        text="Login"
-                        onPress={onLogin}
-                    />
-                    <CustomTouchableOpacity
-                        text="Don't have an account? Create one"
-                        onPress={
-                            ()=> navigation.navigate("SignUp")
-                        }
-                        type = "tertiary"
-                    />
+                    <View style= {styles.buttons_container}>
+                        <CustomTouchableOpacity
+                            text="Back"
+                            type='secondary'
+                            onPress={()=>
+                                navigation.navigate("CodVerification")}
+                        />
+                        <CustomTouchableOpacity
+                            text="Change password" 
+                            onPress={()=>
+                                navigation.navigate("PasswordChange")}
+                        />
+                    </View>
+                    
                 </SafeAreaView>
                 </ScrollView>
                 </KeyboardAvoidingView>
             </View>
-        
-    );
+    )
 };
-
-
-
 const styles = StyleSheet.create({
     body:{
         backgroundColor: "#fefffe",
@@ -99,6 +81,7 @@ const styles = StyleSheet.create({
         paddingTop:50,
     },
     title:{
+        flexWrap: "wrap",
         fontFamily: "sans-serif-medium",
         fontSize: 30,
         color: "#232b2b",
@@ -135,10 +118,10 @@ const styles = StyleSheet.create({
         color:"#fefffe",
         fontWeight: 700,
         fontSize:16
+    },
+    buttons_container:{
+        flexDirection: "row",
+        justifyContent: "space-evenly"
     }
   });
-
-      
-
-
-export default SignUpScreen;
+export default ResetPasswordScreen;

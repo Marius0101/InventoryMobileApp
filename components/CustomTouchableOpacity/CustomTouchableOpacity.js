@@ -22,8 +22,28 @@ const styles = StyleSheet.create({
     button_text_primary:{
         color:"#fefffe",
         fontWeight: 700,
-        fontSize:16
+        fontSize:16,
+        paddingLeft: 12,
+        paddingRight: 12,
     },
+    button_secondary:{
+      margin:20,
+      padding: 15,
+      borderRadius: 20,
+      marginBottom:30,
+      backgroundColor:"#fefffe",
+      alignItems:"center",
+      borderColor: "#232b2b",
+      borderWidth:2
+      
+  },
+  button_text_secondary:{
+      color:"#232b2b",
+      fontWeight: 700,
+      fontSize:16,
+      paddingLeft: 12,
+      paddingRight: 12,
+  },
     button_tertiary:{
 
     },
