@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaView,StyleSheet, Text, View,Image, useWindowDimensions,ScrollView,KeyboardAvoidingView, TouchableOpacity} from 'react-native';
-import CustomInput from "../../components/CustomInput/CustomInput";
-import CustomTouchableOpacity from "../../components/CustomTouchableOpacity/CustomTouchableOpacity";
+import CustomInput from "../../../components/CustomInput/CustomInput";
+import CustomTouchableOpacity from "../../../components/CustomTouchableOpacity/CustomTouchableOpacity";
 import {MaterialIcons, Ionicons} from 'react-native-vector-icons';
 
 
@@ -37,7 +37,7 @@ const LoginScreen = ({navigation}) =>{
                 <ScrollView showsVerticalScrollIndicator = {false}>
                 <StatusBar/>
                     <View style= {styles.logo_container}> 
-                        <Image source = {require("../../assets/images/misc/Logo_UNITBV.png")} style= {[styles.logo,{height:height*0.3}]} resizeMode="contain" />
+                        <Image source = {require("../../../assets/images/misc/Logo_UNITBV.png")} style= {[styles.logo,{height:height*0.3}]} resizeMode="contain" />
                     </View>
                 <SafeAreaView style={styles.touchablecontainer}>
                     <Text style = {styles.title}>Login</Text>
@@ -72,7 +72,9 @@ const LoginScreen = ({navigation}) =>{
                         </View>
                     <CustomTouchableOpacity
                         text="Login"
-                        onPress={onLogin}
+                        onPress={()=>{
+                            navigation.navigate("MainMenuStack",{screen : 'MainMenu'})
+                        }}
                     />
                 </SafeAreaView>
                 </ScrollView>

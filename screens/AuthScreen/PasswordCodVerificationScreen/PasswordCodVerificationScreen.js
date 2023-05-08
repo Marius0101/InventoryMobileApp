@@ -2,11 +2,10 @@ import {Text} from 'react-native';
 import React, {useState} from "react";
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaView,StyleSheet, View,Image, useWindowDimensions,ScrollView,KeyboardAvoidingView} from 'react-native';
-import CustomInput from '../../components/CustomInput/CustomInput';
-import CustomTouchableOpacity from '../../components/CustomTouchableOpacity/CustomTouchableOpacity';
-import {MaterialIcons, Ionicons} from 'react-native-vector-icons';
+import CustomInput from '../../../components/CustomInput/CustomInput';
+import CustomTouchableOpacity from '../../../components/CustomTouchableOpacity/CustomTouchableOpacity';
 
-const ForgotPasswordScreen= ({navigation}) =>{
+const PasswordCodVerificationScreen= ({navigation}) =>{
     const {height} = useWindowDimensions();
     const [email, setEmail] = useState('');
     return (
@@ -16,31 +15,35 @@ const ForgotPasswordScreen= ({navigation}) =>{
                 <ScrollView showsVerticalScrollIndicator = {false}>
                 <StatusBar/>
                     <View style= {styles.logo_container}>
-                        <Image source = {require("../../assets/images/misc/Logo_UNITBV.png")} style= {[styles.logo,{height:height*0.3}]} resizeMode="contain" />
+                        <Image source = {require("../../../assets/images/misc/Logo_UNITBV.png")} style= {[styles.logo,{height:height*0.3}]} resizeMode="contain" />
                     </View>
                 <SafeAreaView style={styles.touchablecontainer}>
-                    <Text style = {styles.title} width = {height*0.3}>Reset your Password</Text>
+                    <Text style = {styles.title} width = {height*0.3}>Cod verification</Text>
                         <View style= {styles.input_containers}>
                             <View style= {styles.input_container}>
-                                <MaterialIcons name  = "alternate-email" size = {20} color = "#232b2b"/>
                                 <CustomInput
-                                    placeholder="Email"
+                                    placeholder="Enter the code"
                                     value={email} 
                                     setValue={setEmail}
+                                    keyboardType='number-pad'
+                                />
+                                <CustomTouchableOpacity
+                                    text="Send the code"
+                                    type='tertiary'
                                 />
                             </View>
                         </View>
                     <View style= {styles.buttons_container}>
                         <CustomTouchableOpacity
-                            text="Back to login"
+                            text="Back"
                             type='secondary'
                             onPress={()=>
-                                navigation.navigate("Login")}
+                                navigation.navigate("ForgotPassword")}
                         />
                         <CustomTouchableOpacity 
-                            text="Send code"
+                            text="Confirm"
                             onPress={()=>
-                                navigation.navigate("CodVerification")}
+                                navigation.navigate("ResetPassword")}
                         />
                     </View>
                     
@@ -54,7 +57,6 @@ const styles = StyleSheet.create({
     body:{
         backgroundColor: "#fefffe",
         flex:1,
-        flexWrap: "wrap"
 
     },
     touchablecontainer: {
@@ -118,4 +120,4 @@ const styles = StyleSheet.create({
         justifyContent: "space-evenly"
     }
   });
-export default ForgotPasswordScreen;
+export default PasswordCodVerificationScreen;
