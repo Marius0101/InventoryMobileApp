@@ -15,7 +15,7 @@ const PasswordCodVerificationScreen= ({navigation}) =>{
                 <ScrollView showsVerticalScrollIndicator = {false}>
                 <StatusBar/>
                     <View style= {styles.logo_container}>
-                        <Image source = {require("../../../assets/images/misc/Logo_UNITBV.png")} style= {[styles.logo,{height:height*0.3}]} resizeMode="contain" />
+                        <Image source = {require("../../../assets/images/misc/logo.png")} style= {[styles.logo,{height:height*0.3}]} resizeMode="contain" />
                     </View>
                 <SafeAreaView style={styles.touchablecontainer}>
                     <Text style = {styles.title} width = {height*0.3}>Cod verification</Text>
